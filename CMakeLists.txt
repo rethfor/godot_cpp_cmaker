@@ -15,8 +15,11 @@ function(gdextension library_target)
 	endif()
 
 	target_link_libraries(${library_target} PRIVATE godot::cpp)
-	set_target_properties(${library_target} PROPERTIES OUTPUT_NAME "${library_target}${GODOTCPP_SUFFIX}")
 	set_target_properties(${library_target} PROPERTIES 
+		OUTPUT_NAME "${library_target}${GODOTCPP_SUFFIX}"
+		# Linux
+		LIBRARY_OUTPUT_DIRECTORY "${OUT_DIR}"
+		# Windows
 		RUNTIME_OUTPUT_DIRECTORY "${OUT_DIR}"
 		RUNTIME_OUTPUT_DIRECTORY_DEBUG "${OUT_DIR}"
 		RUNTIME_OUTPUT_DIRECTORY_RELEASE "${OUT_DIR}"
